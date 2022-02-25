@@ -1,0 +1,15 @@
+* {
+    box-sizing: border-box;
+}
+body{
+    margin: 0 auto;
+    background-color: black;
+    display: grid;
+    color: yellow;
+    grid-template-rows: 60px auto 48px;
+    padding: 20px;
+}
+.card__container{
+    overflow-y: auto;
+    gap: 20px;
+}
