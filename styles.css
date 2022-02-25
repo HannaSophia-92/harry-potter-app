@@ -1,15 +1,21 @@
+@import "./styles/header.css";
+
 * {
     box-sizing: border-box;
+    margin: 0;
 }
 
 body{
     margin: 0 auto;
-    background-color: black;
+    background-color: #011A42;
     display: grid;
-    color: yellow;
+    color: #E89A26;
     grid-template-rows: 160px auto 48px;
     height: 100vh;
+    font-family: Harry P;
+    font-size: 1.4rem;
 }
+
 
 .main {
     overflow-y: auto;
