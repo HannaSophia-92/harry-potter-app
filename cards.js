@@ -1,3 +1,4 @@
+
 function cards() {
     fetchPeople();
     async function fetchPeople(){
@@ -10,10 +11,12 @@ function cards() {
         catch(error) { console.log(error)
         }
     }
+
     function createCharacterList(characters) {
+        const main = document.querySelector('[data-js="main"]')
         const listElement = document.createElement('ul');
-        listElement.className = 'card__list';
-        document.main.append(listElement);
+        listElement.className = 'main__list';
+        main.append(listElement);
     
     characters.forEach(character => {
         const cardElement = document.createElement('li');
@@ -22,10 +25,21 @@ function cards() {
         cardElement.innerHTML = `
         <button data-js="listButton" class="list__button"> 
         <h2 class="list__characterName">${character.name}</h2>
-        <img src="${character.image}"/> </button>
+        <img class="list__card-image" src="${character.image}"/> 
+        <div>
+        <p data-js="character-infos" hidden>Name: ${character.name}</p>
+        </div>
+        </button>
         
         `
         listElement.append(cardElement);
+
+        const characterInfo = cardElement.querySelector('[data-js="character-infos"]')
+        const listButton = cardElement.querySelector('[data-js="listButton"]')
+
+        listButton.addEventListener('click', () => {
+            characterInfo.toggleAttribute('hidden')
+        })
     })
     }
 }

@@ -1,18 +1,46 @@
 * {
     box-sizing: border-box;
 }
+
 body{
     margin: 0 auto;
     background-color: black;
     display: grid;
     color: yellow;
-    grid-template-rows: 60px auto 48px;
-    padding: 20px;
+    grid-template-rows: 160px auto 48px;
+    height: 100vh;
 }
-.card__container{
+
+.main {
     overflow-y: auto;
     gap: 20px;
 }
-.card__list{
-    list-style: none;    
+
+.main__list{
+    list-style: none; 
+    padding: 5px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 5px;
 }
+
+.list__button {
+    width: 25vw;
+    height: 30vh;
+}
+.list__card-image {
+    width: 70px;
+    height: 100px;
+    overflow: hidden;
+}
+
+.card__element--active {
+    width: 90vw;
+    height: 60vh;
+}
+
+
+
+
+
