@@ -6,19 +6,19 @@
 }
 
 body{
-    margin: 0 auto;
-    background-color: #011A42;
+   
+    background-color: #000C17;
     display: grid;
     color: #E89A26;
-    grid-template-rows: 160px auto 48px;
+    grid-template-rows: 160px auto 55px;
     height: 100vh;
     font-family: Harry P;
     font-size: 1.4rem;
 }
 
-
 .main {
     overflow-y: auto;
+    overflow-x: hidden;
     gap: 20px;
 }
 
@@ -32,21 +32,41 @@ body{
 }
 
 .list__button {
-    width: 25vw;
-    height: 30vh;
+    width: 100px;
+    height: 170px; 
+    margin: 0;
+    background-color: #023E67;
+    border: #E89A26 double;
+    border-radius: 10px;
 }
 
-.list__character 
+.list__character {
+   display: flex;
+   flex-direction: column;
+   align-items:center;
+   align-content: flex-start;
+   justify-content: flex-start;
 
+   padding: 3px;
+   gap: 5px;
+}
 
 .list__card-image {
     width: 70px;
     height: 100px;
-    overflow: hidden;
+    border: #000C17 double;
+    border-radius: 10px;
+}
+
+.list__characterName {
+    font-family: Harry P;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #E89A26;
 }
 
 .list__character--active{
-    background-color: hotpink;
+    background-color: #000C17;
     display: flex;
     flex-direction:row-reverse;
     justify-content: space-around;

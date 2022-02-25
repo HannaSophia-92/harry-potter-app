@@ -25,11 +25,11 @@ function cards() {
         cardElement.innerHTML = `
         <button data-js="listButton" class="list__button"> 
         <div data-js="character" class="list__character">
-        <h2 class="list__characterName">${character.name}</h2>
         <img data-js="character__image" class="list__card-image" src="${character.image}"/> 
+        <h2 class="list__characterName">${character.name}</h2>
         </div>
         <div data-js="character-infos" hidden>
-        <ul class=> 
+        <ul> 
         <li> Date of Birth: ${character.dateOfBirth}</li>
         <li> House: ${character.house}</li>
         <li> Wizard: ${character.wizard}</li>

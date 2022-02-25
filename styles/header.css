@@ -1,9 +1,22 @@
 .header {
     padding: 5px;
     margin: 10px;
+    text-align: center;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-
-
 }
+
+.search__bar {
+    width: 75vw;
+    border-radius: 10px;
+    border: 2px #E89A26 solid;
+    background-color: #C27E08;
+    padding: 2px;
+    
+}
+
+::placeholder {
+    color: #023E67;
+    opacity: 1; 
+  }
