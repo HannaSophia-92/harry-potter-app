@@ -29,11 +29,30 @@ body{
     width: 25vw;
     height: 30vh;
 }
+
+.list__character 
+
+
 .list__card-image {
     width: 70px;
     height: 100px;
     overflow: hidden;
 }
+
+.list__character--active{
+    background-color: hotpink;
+    display: flex;
+    flex-direction:row-reverse;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+.list__card-image--active {
+    border-radius: 10px;
+    height: 200px;
+}
+
 
 .card__element--active {
     width: 90vw;
