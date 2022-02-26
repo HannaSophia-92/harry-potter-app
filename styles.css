@@ -1,64 +1,20 @@
+@import "./styles/header.css";
+@import "./styles/cards.css";
+
 * {
     box-sizing: border-box;
+    margin: 0;
 }
 
 body{
-    margin: 0 auto;
-    background-color: black;
+    background-color: #000C17;
     display: grid;
-    color: yellow;
-    grid-template-rows: 160px auto 48px;
+    color: #E89A26;
+    grid-template-rows: 155px auto 55px;
     height: 100vh;
+    font-family: Harry P;
+    font-size: 1.4rem;
 }
-
-.main {
-    overflow-y: auto;
-    gap: 20px;
-}
-
-.main__list{
-    list-style: none; 
-    padding: 5px;
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    gap: 5px;
-}
-
-.list__button {
-    width: 25vw;
-    height: 30vh;
-}
-
-.list__character 
-
-
-.list__card-image {
-    width: 70px;
-    height: 100px;
-    overflow: hidden;
-}
-
-.list__character--active{
-    background-color: hotpink;
-    display: flex;
-    flex-direction:row-reverse;
-    justify-content: space-around;
-    align-items: center;
-    
-}
-
-.list__card-image--active {
-    border-radius: 10px;
-    height: 200px;
-}
-
-
-.card__element--active {
-    width: 90vw;
-    height: 60vh;
-}
-
 
 
 
