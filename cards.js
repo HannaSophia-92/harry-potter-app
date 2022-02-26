@@ -15,7 +15,7 @@ function cards() {
     function createCharacterList(characters) {
         const main = document.querySelector('[data-js="main"]')
         const listElement = document.createElement('ul');
-        listElement.className = 'main__list';
+        listElement.className = 'cards__container-list';
         main.append(listElement);
     
     characters.forEach(character => {
@@ -23,18 +23,18 @@ function cards() {
         cardElement.className = 'card__element';
 
         cardElement.innerHTML = `
-        <button data-js="listButton" class="list__button"> 
-        <div data-js="character" class="list__character">
-        <img data-js="character__image" class="list__card-image" src="${character.image}"/> 
-        <h2 class="list__characterName">${character.name}</h2>
-        </div>
-        <div data-js="character-infos" hidden>
+        <button data-js="listButton" class="cards__container-button"> 
+         <div data-js="character">
+            <img data-js="character__image" class="cards__container-image" aria-label="picture of" src="${character.image}"/> 
+            <h2 class="cards__characterName">${character.name}</h2>
+         </div>
+        <div data-js="character-infos" class="cards__character-infos" hidden>
         <ul> 
-        <li> Date of Birth: ${character.dateOfBirth}</li>
-        <li> House: ${character.house}</li>
-        <li> Wizard: ${character.wizard}</li>
-        <li> Patronus: ${character.patronus}</li>
-        <li> Actor: ${character.actor}</li>
+            <li> Date of Birth: ${character.dateOfBirth}</li>
+            <li> House: ${character.house}</li>
+            <li> Wizard: ${character.wizard}</li>
+            <li> Patronus: ${character.patronus}</li>
+            <li> Actor: ${character.actor}</li>
         </ul>
         </div>
         </button>
@@ -49,9 +49,9 @@ function cards() {
 
         listButton.addEventListener('click', () => {
             listButton.classList.toggle('card__element--active')
-            characterHeader.classList.toggle('list__character--active')
-            characterImage.classList.toggle('list__card-image--active')
-            characterImage.classList.toggle('list__card-image')
+            characterHeader.classList.toggle('cards__character--active')
+            characterImage.classList.toggle('cards__image--active')
+            characterImage.classList.toggle('cards__container-image')
             characterInfo.toggleAttribute('hidden')
 
             

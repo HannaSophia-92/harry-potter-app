@@ -1,0 +1,68 @@
+.cards__container {
+    overflow-y: auto;
+    overflow-x: hidden;
+    gap: 20px;
+}
+
+.cards__container-list{
+    list-style: none; 
+    padding: 5px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.cards__container-button {
+    width: 100px;
+    height: 170px; 
+    margin: 0;
+    padding: 10px;
+    background-color: #023E67;
+    border: #E89A26 double;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    align-content: flex-start;
+   
+}
+
+.cards__container-image {
+    width: 70px;
+    height: 100px;
+    border: #000C17 double;
+    border-radius: 10px;
+}
+
+.cards__characterName {
+    font-family: Harry P;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: #E89A26;
+}
+
+.cards__character-infos {
+    font-family: Harry P;
+}
+
+.cards__character--active{
+    background-color: #000C17;
+    display: flex;
+    flex-direction:row-reverse;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+.cards__-image--active {
+    border-radius: 10px;
+    height: 200px;
+}
+
+
+.card__element--active {
+    width: 90vw;
+    height: 60vh;
+}
+
