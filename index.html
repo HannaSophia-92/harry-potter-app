@@ -23,13 +23,28 @@
       </header>
   </main>
     <footer>
-      <ul class="footer__buttons-container" data-js="house-list">
-        <button class="footer__button" data-js="gryffindor">gryffindor</button>
-        <button class="footer__button" data-js="ravenclaw">RV</button>
-        <button class="footer__button" data-js="hogwarts">H</button>
-        <button class="footer__button" data-js="hufflepuff">HP</button>
-        <button class="footer__button" data-js="slytherin">SL</button>
-      </ul>
+      <form class="footer__buttons-container" data-js="house-list">
+        <div>
+        <label for="gryffindor"><img class="footer__image" src="./icons/Gryffindor_ClearBG.png" alt=""></label>
+        <input name="tag-filter" class="footer__button" value="Gryffindor" id="gryffindor" type="radio">
+      </div>
+      <div>
+        <label for="ravenclaw"><img class="footer__image" src="./icons/RavenclawCrest.png" alt=""></label>
+        <input name="tag-filter" class="footer__button" value="Ravenclaw" id="ravenclaw" type="radio">
+      </div>
+        <div>
+        <label for="hogwarts"><img class="footer__image" src="./icons/bookmark.svg" alt=""></label>
+        <input name="tag-filter" class="footer__button" value="Hogwarts" id="hogwarts" type="radio">
+      </div>
+        <div>
+        <label for="huffelpuff"><img class="footer__image" src="./icons/Hufflepuff_ClearBG.png" alt=""></label>
+        <input name="tag-filter" class="footer__button" value="Huffelpuff" id="huffelpuff" type="radio">
+      </div>
+        <div>
+        <label for="slytherin"><img class="footer__image" src="./icons/Slytherin_ClearBG.png" alt=""></label>
+        <input name="tag-filter" class="footer__button" value="Slytherin" id="slytherin" type="radio">
+      </div>
+      </form>
     </footer>
   </body>
 </html>

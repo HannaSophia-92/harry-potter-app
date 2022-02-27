@@ -5,13 +5,29 @@ function cards() {
       const response = await fetch(
         'http://hp-api.herokuapp.com/api/characters'
       );
-      const data = await response.json();
-      console.log(data);
-      createCharacterList(data);
+      const Hogwarts = await response.json();
+      console.log(Hogwarts);
+      createCharacterList(Hogwarts);
     } catch (error) {
       console.log(error);
     }
   }
+
+  
+  const filterForm = document.querySelector('[data-js="house-list"]')
+  let currentFilter = 'Hogwarts'
+
+  let apiUrl = 'http://hp-api.herokuapp.com/api/characters';
+
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(characters => createCharacterList(characters));
+
+
+  filterForm.addEventListener('change', () => {
+    currentFilter = filterForm.elements['tag-filter'].value;
+    createCharacterList(characters);
+  })
 
   function createCharacterList(characters) {
     const main = document.querySelector('[data-js="main"]');
@@ -20,29 +36,38 @@ function cards() {
     listElement.setAttribute("data-js", "cards__container-list");
     main.append(listElement);
 
-    characters.forEach(character => {
-      const cardElement = document.createElement('li');
-      cardElement.className = 'card__element';
 
-      cardElement.innerHTML = `
-        <button data-js="listButton" class="cards__container-button"> 
-         <div data-js="character">
-            <img data-js="character__image" class="cards__container-image" aria-label="picture of" src="${character.image}"/> 
-            <h2 class="cards__characterName">${character.name}</h2>
-         </div>
-        <div data-js="character-infos" class="cards__character-infos-container" hidden>
-        <ul class="cards__character-infos"> 
-            <li> Date of Birth: ${character.dateOfBirth}</li>
-            <li> House: ${character.house}</li>
-            <li> Wizard: ${character.wizard}</li>
-            <li> Patronus: ${character.patronus}</li>
-            <li> Actor: ${character.actor}</li>
-        </ul>
-        </div>
-        </button>
-        
-        `;
-      listElement.append(cardElement);
+
+    listElement.innerHTML = '';
+    characters
+      .filter(character => character.house.includes(currentFilter) || currentFilter === 'Hogwarts')
+      .forEach(character => {
+        const cardElement = document.createElement('li');
+        cardElement.className = 'card__element';
+console.log(character.house.includes(currentFilter))
+        cardElement.innerHTML = `
+          <button data-js="listButton" class="cards__container-button"> 
+          <div data-js="character">
+              <img data-js="character__image" class="cards__container-image" aria-label="picture of" src="${character.image}"/> 
+              <h2 class="cards__characterName">${character.name}</h2>
+          </div>
+          <div data-js="character-infos" class="cards__character-infos-container" hidden>
+          <ul class="cards__character-infos"> 
+              <li> Date of Birth: ${character.dateOfBirth}</li>
+              <li> House: ${character.house}</li>
+              <li> Wizard: ${character.wizard}</li>
+              <li> Patronus: ${character.patronus}</li>
+              <li> Actor: ${character.actor}</li>
+          </ul>
+          </div>
+          </button>          
+          `;
+        listElement.append(cardElement);
+
+
+
+
+      
 
       const characterInfo = cardElement.querySelector(
         '[data-js="character-infos"]'
@@ -65,49 +90,49 @@ function cards() {
     });
   }
 
-const gryffindor = document.querySelector('[data-js="gryffindor"]')
-const ravenclaw = document.querySelector('[data-js="ravenclaw"]')
-const hogwarts = document.querySelector('[data-js="hogwarts"]')
-const hufflepuff = document.querySelector('[data-js="hufflepuff"]')
-const slytherin = document.querySelector('[data-js="slytherin"]')
-const listElement = document.querySelector('[data-js="cards__container-list"]')
-let currentFilter = 'hogwarts'
+// const gryffindor = document.querySelector('[data-js="gryffindor"]')
+// const ravenclaw = document.querySelector('[data-js="ravenclaw"]')
+// const hogwarts = document.querySelector('[data-js="hogwarts"]')
+// const hufflepuff = document.querySelector('[data-js="hufflepuff"]')
+// const slytherin = document.querySelector('[data-js="slytherin"]')
+// const listElement = document.querySelector('[data-js="cards__container-list"]')
+// let currentFilter = 'hogwarts'
 
 
-const houseList = document.querySelector('[data-js="house-list"]')
-houseList.addEventListener('click', () => {
-  currentFilter = houseList.button['data-js="gryffindor"'].value;
-  renderGryffindor();
-})
+// const houseList = document.querySelector('[data-js="house-list"]')
+// houseList.addEventListener('click', () => {
+//   currentFilter = gryffindor.value;
+//   renderGryffindor();
+// })
 
 
-renderGryffindor();
+// renderGryffindor();
 
-function renderGryffindor() {
-  listElement.innerHTML = ''
-  characters
-     .filter(character => character.house.includes(currentFilter) || currentFilter === 'hogwarts')
-     .forEach(character => {
-       cardElement.innerHTML = `
-       <button data-js="listButton" class="cards__container-button"> 
-        <div data-js="character">
-           <img data-js="character__image" class="cards__container-image" aria-label="picture of" src="${character.image}"/> 
-           <h2 class="cards__characterName">${character.name}</h2>
-        </div>
-       <div data-js="character-infos" class="cards__character-infos-container" hidden>
-       <ul class="cards__character-infos"> 
-           <li> Date of Birth: ${character.dateOfBirth}</li>
-           <li> House: ${character.house}</li>
-           <li> Wizard: ${character.wizard}</li>
-           <li> Patronus: ${character.patronus}</li>
-           <li> Actor: ${character.actor}</li>
-       </ul>
-       </div>
-       </button>
-       `;
-      listElement.append(cardElement);
-    })
-}
+// function renderGryffindor(characters) {
+//   //listElement.innerHTML = '';
+//   characters
+//      .filter(character => character.house.includes(currentFilter) || currentFilter === 'hogwarts')
+//      .forEach(character => {
+//        cardElement.innerHTML = `
+//        <button data-js="listButton" class="cards__container-button"> 
+//         <div data-js="character">
+//            <img data-js="character__image" class="cards__container-image" aria-label="picture of" src="${character.image}"/> 
+//            <h2 class="cards__characterName">${character.name}</h2>
+//         </div>
+//        <div data-js="character-infos" class="cards__character-infos-container" hidden>
+//        <ul class="cards__character-infos"> 
+//            <li> Date of Birth: ${character.dateOfBirth}</li>
+//            <li> House: ${character.house}</li>
+//            <li> Wizard: ${character.wizard}</li>
+//            <li> Patronus: ${character.patronus}</li>
+//            <li> Actor: ${character.actor}</li>
+//        </ul>
+//        </div>
+//        </button>
+//        `;
+//       listElement.append(cardElement);
+//     })
+// }
 }
 
 export default cards;
