@@ -35,14 +35,14 @@
   position: absolute;
   background-color: transparent;
   color: #e89a26;
-
   border: 0;
   padding: 3px;
   width: 30px;
   height: 30px;
   cursor: pointer;
-  left: 70px;
+  right: 5px;
   top: -5px;
+  z-index: 2;
 }
 
 .cards__container-image {
@@ -76,7 +76,6 @@
 
 .cards__character--active {
   display: flex;
-  flex-direction: row-reverse;
   justify-content: space-around;
   align-items: center;
   border: #023e67 double;
@@ -99,14 +98,7 @@
 }
 
 .cards__bookmark-button--active {
-  background-color: #e89a26;
-  position: absolute;
-  border: 0;
-  padding: 3px;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  left: 70px;
-  top: -5px;
-  z-index: 10;
+  background-color: transparent;
+  color: rgb(128, 5, 5);
+
 }

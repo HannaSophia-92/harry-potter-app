@@ -6,6 +6,7 @@
   background-color: #023e67;
   gap: 1px;
   height: 48px;
+  border-top: 2px solid black;
 }
 
 .footer__button {
@@ -18,4 +19,8 @@
 
 .footer__image {
   width: 35px;
+}
+
+.br-50 {
+  border-radius: 50%;
 }
