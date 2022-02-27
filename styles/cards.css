@@ -13,6 +13,10 @@
   gap: 5px;
 }
 
+.card__element {
+  position: relative;
+}
+
 .cards__container-button {
   width: 100px;
   height: 170px;
@@ -25,6 +29,20 @@
   flex-direction: column;
   align-items: center;
   align-content: flex-start;
+}
+
+.cards__bookmark-button {
+  position: absolute;
+  background-color: transparent;
+  color: #e89a26;
+
+  border: 0;
+  padding: 3px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  left: 70px;
+  top: -5px;
 }
 
 .cards__container-image {
@@ -77,4 +95,18 @@
 .card__element--active {
   width: 90vw;
   height: 55vh;
+  position: relative;
+}
+
+.cards__bookmark-button--active {
+  background-color: #e89a26;
+  position: absolute;
+  border: 0;
+  padding: 3px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  left: 70px;
+  top: -5px;
+  z-index: 10;
 }
