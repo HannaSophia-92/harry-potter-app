@@ -22,6 +22,10 @@
   padding: 4px;
 }
 
+.search-bar__label{
+  text-indent:-100em;
+}
+
 ::placeholder {
   color: #023e67;
   opacity: 1;

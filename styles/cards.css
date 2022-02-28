@@ -59,9 +59,6 @@
   color: #e89a26;
 }
 
-.cards__character-infos-container {
-  margin-top: 10px;
-}
 
 .cards__character-infos {
   font-family: Harry P;
@@ -72,6 +69,7 @@
   align-items: flex-start;
   color: #e89a26;
   font-size: 1rem;
+  margin-top: 10px;
 }
 
 .cards__character--active {

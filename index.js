@@ -1,5 +1,5 @@
-import cards from './JS/cards.js';
-import footer from './JS/footer.js';
+import cards from './js/cards.js';
+import setActive from './js/setActive.js';
 
 cards();
-footer()
+setActive();
