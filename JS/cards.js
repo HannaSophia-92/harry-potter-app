@@ -1,12 +1,16 @@
 function cards() {
+
+  let characters
+
   fetchPeople();
   async function fetchPeople() {
     try {
       const response = await fetch(
         'http://hp-api.herokuapp.com/api/characters'
       );
-      const hogwarts = await response.json();
-      createCharacterList(hogwarts);
+      const data = await response.json();
+      characters = data;
+      createCharacterList(characters);
     } catch (error) {
       console.log(error);
     }
@@ -16,29 +20,18 @@ function cards() {
   const filterForm = document.querySelector('[data-js="house-list"]')
   let currentFilter = 'Hogwarts'
 
-  let apiUrl = 'http://hp-api.herokuapp.com/api/characters';
-
-  fetch(apiUrl)
-    .then(response => response.json())
-    .then(characters => createCharacterList(characters));
-
-
   filterForm.addEventListener('change', () => {
     currentFilter = filterForm.elements['tag-filter'].value;
     createCharacterList(characters);
   })
 
   function createCharacterList(characters) {
-    const main = document.querySelector('[data-js="main"]');
-    const listElement = document.createElement('ul');
-    listElement.className = 'cards__container-list';
-    listElement.setAttribute("data-js", "cards__container-list");
-    main.append(listElement);
+const container = document.querySelector('[data-js="cards-container"]')
 
-
-
-    listElement.innerHTML = '';
+    container.innerHTML = '';
+    
     characters
+    .filter(character => character.house.includes(currentFilter) || currentFilter === 'Hogwarts')
       .forEach(character => {
         const cardElement = document.createElement('li');
         cardElement.className = 'card__element';
@@ -49,25 +42,42 @@ function cards() {
               <img data-js="character__image" class="cards__container-image" aria-label="picture of" src="${character.image}"/> 
               <h2 class="cards__characterName">${character.name}</h2>
           </div>
-          
-          <ul data-js="character-infos" class="cards__character-infos" hidden> 
+          <div data-js="character-infos" class='cards__characters__info__container' hidden>
+          <ul  class="cards__character-infos"> 
               <li> Date of Birth: ${character.dateOfBirth}</li>
               <li> House: ${character.house}</li>
               <li> Wizard: ${character.wizard}</li>
               <li> Patronus: ${character.patronus}</li>
               <li> Actor: ${character.actor}</li>
           </ul>
-          
+          </div>
           </div>          
           `;
-        listElement.append(cardElement);
+        container.append(cardElement);
 
-
-
-
-      
-
-      
+        const characterInfo = cardElement.querySelector(
+          '[data-js="character-infos"]'
+        );
+        const listButton = cardElement.querySelector('[data-js="listButton"]');
+        const characterHeader = cardElement.querySelector(
+          '[data-js="character"]'
+        );
+        const characterImage = cardElement.querySelector(
+          '[data-js="character__image"]'
+        );
+  
+        listButton.addEventListener('click', () => {
+          listButton.classList.toggle('card__element--active');
+          characterHeader.classList.toggle('cards__character--active');
+          characterImage.classList.toggle('cards__image--active');
+          characterImage.classList.toggle('cards__container-image');
+          characterInfo.toggleAttribute('hidden');
+        });
+        const bookmark = cardElement.querySelector('[data-js="bookmark"]');
+          bookmark.addEventListener('click', () => {
+          character.isBookmarked = !character.isBookmarked;
+          bookmark.classList.toggle('cards__bookmark-button--active');
+        });
     });
     
   }
