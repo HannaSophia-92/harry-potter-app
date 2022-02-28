@@ -1,50 +1,41 @@
 function cards() {
+
+  let characters;
+
   fetchPeople();
   async function fetchPeople() {
     try {
       const response = await fetch(
         'http://hp-api.herokuapp.com/api/characters'
       );
-      const Hogwarts = await response.json();
-      console.log(Hogwarts);
-      createCharacterList(Hogwarts);
+      const data = await response.json();
+      characters = data;
+      createCharacterList(characters);
     } catch (error) {
       console.log(error);
     }
   }
-
-  
+    
   const filterForm = document.querySelector('[data-js="house-list"]')
   let currentFilter = 'Hogwarts'
 
-  let apiUrl = 'http://hp-api.herokuapp.com/api/characters';
-
-  fetch(apiUrl)
-    .then(response => response.json())
-    .then(characters => createCharacterList(characters));
-
-
   filterForm.addEventListener('change', () => {
     currentFilter = filterForm.elements['tag-filter'].value;
+    console.log(currentFilter);
     createCharacterList(characters);
   })
 
   function createCharacterList(characters) {
-    const main = document.querySelector('[data-js="main"]');
-    const listElement = document.createElement('ul');
-    listElement.className = 'cards__container-list';
-    listElement.setAttribute("data-js", "cards__container-list");
-    main.append(listElement);
+    const container = document.querySelector('[data-js="cards-container"]');
+    container.innerHTML = '';
 
 
-
-    listElement.innerHTML = '';
     characters
       .filter(character => character.house.includes(currentFilter) || currentFilter === 'Hogwarts')
       .forEach(character => {
         const cardElement = document.createElement('li');
         cardElement.className = 'card__element';
-console.log(character.house.includes(currentFilter))
+
         cardElement.innerHTML = `
         <button class="cards__bookmark-button ${character.isBookmarked ? 'cards__bookmark-button--active' : ''} " data-js="bookmark"><i class="fas fa-bookmark fa-2x"></i></button>  
         <button data-js="listButton" class="cards__container-button"> 
@@ -63,7 +54,7 @@ console.log(character.house.includes(currentFilter))
           </div>
           </button>          
           `;
-        listElement.append(cardElement);
+        container.append(cardElement);
 
 
 
